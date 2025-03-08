@@ -1,0 +1,15 @@
+| -Notes- | -Bash Scripting- |
+	- { Index }
+		1. <Creating a Bash>
+		2. <Essential Bash Commands>
+		3. < Creating Functions >
+		4. < loops >
+		5. < if/else statements > 
+
+| -Creating a Bash- |
+	- { Steps }
+		1. nano <bash_script>
+		2. add the following line: '#!/bin/bash
+		3. make it an executable: 'chdmod +x <bash_script>'
+		4. './<bash_script>' to run bash
+
