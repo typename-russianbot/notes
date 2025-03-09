@@ -1,37 +1,47 @@
-| -Notes- | -Makefile Flags- | 
+| -Notes- | <Makefile Flags & Commands> | 
+
 	- { Index }
-		1. Example Makefile Structure
-		2. Compiler & Flags
-		3. cpp & .o Files
-		4. Target, Build, & Compile Functions
-		5. Make Function Calls [i.e. clean/all/run]
+		1. -Essential Flags in Makefile-
+		2. -Function Calls in Makefile-
+		3. -Compiling & Linking-
 
-| -Example Makefile- |
-	- { Example File Structure }
-		CXX = g++ 
-		CXXFLAGS = -g -Wall -std=c++11
 
-		SRC = Account Keychain
-		OBJ = build
+| -Essential Makefile Flags- |
+
+	- { List of Flags }	
+		1. CXX = g++ 							|| = gnu is always denoted as 'CXX'
+		2. CXX_Flags = -g -Wall -std=c++11 				|| - all g++ flags are denoted as CXX_FLAGS
+		3. BUILD = build 						|| - build folder to put .o object files
+		3. SOURCES = source/files.cpp 					|| - all source code written in c++ 
+		4. OBJECTS = $(patsubst source/%.cpp, build/%.o, $(SOURCES)) 	|| - convert all c++ files to assembly files 
+		5. TARGET = <.executable> 					|| - target executable file
+
+| -Makefile Functions- |
+
+	- { List of Functions }
+		1. all: $(TARGET)
+
+		2. run: $(TARGET)
+			./<.executable>
+
+		3. clean: 
+			rm -rf $(TARGET) $(BUILD)
+			clear		
+
+| -Compiling & Linking- |
+
+	- { Compiling }
+		1. Need to convert/compile all source files (.cpp) into object (.o) files
+	
+		2. { How? }
+			-build/%.o: source/%.cpp
+				-mkdir -p $(BUILD) 			|| - ensures dir build is created b4 compiling
+				-$(CXX) $(CXXFLAGS) -c $< -o $@		|| - finds all <cpp's> and creates respective <.o's>
+
+
+	- { Linking }
+		1. Link all source, include, & object files to the target then create the executable
 		
-		SRC_FILES = $(wildcard $(SRC)/*.cpp) main.cpp
-		OBJ_FILES = $(patsubst %.cpp, $(OBJ)/%.o, $(SRC_FILES))
-
-		TARGET = keychain
-
-		$(OBj): 
-			mkdir -p $(OBJ)
-
-		$(TARGET): $(OBJ) $(OBJ_FILES)
-			$(CXX) $(CXXFLAGS) -c %< -o %@
-		
-		all: $(TARGET)
-		
-		run: 
-			clear
-			./$(TARGET)
-
-		clean: 
-			rm -rf $(OBJ) $(TARGET)
-
-| -Compiler & Flags- |
+		2. { How? }
+			=$(TARGET): $(OBJECTS)
+				-$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(TARGET)
