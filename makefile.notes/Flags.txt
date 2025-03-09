@@ -1,4 +1,0 @@
-| -Notes- | -Makefile Flags- | 
-	- { Index }
-		1. List of Flags & their Functions
-		2. 

@@ -1,0 +1,37 @@
+| -Notes- | -Makefile Flags- | 
+	- { Index }
+		1. Example Makefile Structure
+		2. Compiler & Flags
+		3. cpp & .o Files
+		4. Target, Build, & Compile Functions
+		5. Make Function Calls [i.e. clean/all/run]
+
+| -Example Makefile- |
+	- { Example File Structure }
+		CXX = g++ 
+		CXXFLAGS = -g -Wall -std=c++11
+
+		SRC = Account Keychain
+		OBJ = build
+		
+		SRC_FILES = $(wildcard $(SRC)/*.cpp) main.cpp
+		OBJ_FILES = $(patsubst %.cpp, $(OBJ)/%.o, $(SRC_FILES))
+
+		TARGET = keychain
+
+		$(OBj): 
+			mkdir -p $(OBJ)
+
+		$(TARGET): $(OBJ) $(OBJ_FILES)
+			$(CXX) $(CXXFLAGS) -c %< -o %@
+		
+		all: $(TARGET)
+		
+		run: 
+			clear
+			./$(TARGET)
+
+		clean: 
+			rm -rf $(OBJ) $(TARGET)
+
+| -Compiler & Flags- |
