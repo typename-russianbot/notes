@@ -1,0 +1,20 @@
+| -Notes- | -Managing Multiple SSH Profiles- |
+
+	- { Index }
+		1. creating multiple host profiles with nano ~/.ssh/config
+		2. verifying ssh keys for different hosts
+		3. re-linking & re-freshing which key to push from 
+
+| -Creating Multiple Hosts- |
+	- { How? }
+		1. generate multiple ssh keys w/ ssh-keygen & necessary flags
+		2. create multiple 'host' profiles via nano ~/.ssh/config
+			- { host profile structure }
+				-Host <git-profile>
+					-HostName github.com
+					-User git
+					-IdentityFile ~/.ssh/<id_rsa_key> 
+
+| -Verifying Keys for Multiple Hosts- |
+
+| -Choosing Hosts- |
