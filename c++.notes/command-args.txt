@@ -1,0 +1,21 @@
+| -Notes- | -Command Line Arguments- |
+	
+	- { Index }
+		1. argc & argv 
+		2. Creating & Handling Program Flags
+
+| -argc & argv- |
+
+	- { Basics } 
+		-- argc & argv are arguments passed after the executable './<program>' 
+		-- these arguments can be passed into the program itself & enhance user control
+		-- argc is the argument counter, argv[] is the array of char pointers after the .exe file
+
+	- { How }
+		-- void main(int argc, char* argv[])
+				
+
+| -Program Flags- |
+
+	- { Basics }
+	
